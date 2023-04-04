@@ -27,7 +27,7 @@
   ></app-city-card>
 </div>
 <hr />
-<div>
+<div *ngIf="storedCities">
   Экстремумы:
   <ul>
     <li *ngFor="let extrem of minMax | keyvalue">
