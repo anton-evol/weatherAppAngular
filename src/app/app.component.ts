@@ -99,6 +99,10 @@ export class AppComponent {
       this.refreshPeriod = JSON.parse(
         localRefreshPeriod ? localRefreshPeriod : '600'
       );
+      this.localStorageService.setData(
+        'refreshPeriod',
+        JSON.stringify(this.refreshPeriod)
+      );
     }
     this.setUpdateInterval();
   }
