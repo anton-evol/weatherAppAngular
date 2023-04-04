@@ -26,8 +26,8 @@
     (deleteCity)="deleteCity($event)"
   ></app-city-card>
 </div>
-<hr />
-<div *ngIf="storedCities">
+<div *ngIf="minMax['Температура'].length">
+  <hr />
   Экстремумы:
   <ul>
     <li *ngFor="let extrem of minMax | keyvalue">
