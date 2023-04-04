@@ -1,0 +1,17 @@
+<!-- <div> -->
+Введите город:
+<input
+  type="text"
+  [(ngModel)]="inputName"
+  (input)="onInput()"
+  (keyup.enter)="onEnter()"
+/>
+<ul>
+  <li
+    *ngFor="let name of predictedNames; let idx = index"
+    (click)="onClick(idx)"
+  >
+    {{ name }}
+  </li>
+</ul>
+<!-- </div> -->

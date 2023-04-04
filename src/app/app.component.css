@@ -1,0 +1,10 @@
+.weather-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.errorNoCity {
+  color: red;
+  font-weight: bold;
+  display: inline-block;
+}
