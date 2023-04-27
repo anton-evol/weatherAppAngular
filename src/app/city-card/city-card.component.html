@@ -1,7 +1,16 @@
-<div>
+<div class="city-card">
   <p>
     <strong #cityname>
       {{ city["city"]["name"] }}, {{ city["city"]["country"] }}
+      <img
+        class="icon-weather"
+        [src]="
+          'https://openweathermap.org/img/wn/' +
+          city['list'][timeSlot].weather[0].icon +
+          '.png'
+        "
+        alt="weather icon"
+      />
     </strong>
   </p>
 
@@ -12,20 +21,34 @@
   </select>
 
   <ul>
-    <li>Температура: {{ city["list"][timeSlot].main.temp }} C</li>
+    <li>Температура: {{ city["list"][timeSlot].main.temp }} °C</li>
     <li>Влажность: {{ city["list"][timeSlot].main.humidity }} %</li>
-    <li>Погода: {{ city["list"][timeSlot].weather[0].main }}</li>
+    <li>Давление: {{ city["list"][timeSlot].main.pressure }} гПа</li>
     <li>
-      Ветер: {{ city["list"][timeSlot].wind.speed }} м/с, направление:
-      {{ city["list"][timeSlot].wind.deg }} град.
+      Ветер: {{ city["list"][timeSlot].wind.speed }} м/с
+      <img
+        src="../../assets/img/icon-wind-arrow.png"
+        alt="wind direction"
+        class="icon-wind-arrow"
+        [ngStyle]="{
+          transform: 'rotate(' + (city['list'][timeSlot].wind.deg + 90) + 'deg)'
+        }"
+      />
     </li>
-    <li>Обновлено: {{ city["lastUpd"] | date : "dd-MM-yyyy HH:mm:ss" }}</li>
-    <!-- <li>{{ city["list"][timeSlot] | json }}</li> -->
+    <li>Upd: {{ city["lastUpd"] | date : "dd-MM-yyyy HH:mm:ss" }}</li>
   </ul>
-  <button (click)="updateCity(city['city']['name'], city['city']['country'])">
-    Upd
-  </button>
-  <button (click)="removeCity(city['city']['name'], city['city']['country'])">
-    Del
-  </button>
+  <div class="button-block">
+    <button
+      class="button button-upd"
+      (click)="updateCity(city['city']['name'], city['city']['country'])"
+    >
+      Обновить
+    </button>
+    <button
+      class="button button-del"
+      (click)="removeCity(city['city']['name'], city['city']['country'])"
+    >
+      Удалить
+    </button>
+  </div>
 </div>

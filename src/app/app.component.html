@@ -20,7 +20,7 @@
 <hr />
 <div class="weather-cards">
   <app-city-card
-    *ngFor="let city of storedCities | keyvalue"
+    *ngFor="let city of storedCities | keyvalue : orderByCountry"
     [city]="city.value"
     (updWeather)="updWeather($event)"
     (deleteCity)="deleteCity($event)"

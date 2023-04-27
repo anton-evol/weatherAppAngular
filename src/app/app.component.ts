@@ -1,3 +1,4 @@
+import { KeyValue } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { GetWeatherService } from './get-weather.service';
 import { LocalStorageService } from './local-storage.service';
@@ -159,4 +160,15 @@ export class AppComponent {
     this.getSetStoredCities();
     this.getMinMax();
   }
+
+  orderByCountry = (
+    a: KeyValue<string, StoredCities>,
+    b: KeyValue<string, StoredCities>
+  ): number => {
+    if (a.value['city'].country === b.value['city'].country) {
+      return a.value['city']['name'] < b.value['city']['name'] ? -1 : 1;
+    } else {
+      return a.value['city'].country < b.value['city'].country ? -1 : 1;
+    }
+  };
 }

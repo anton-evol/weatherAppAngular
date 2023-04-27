@@ -20,11 +20,23 @@ export class SearchComponent {
       let namesArr: Array<string> = [];
       this.getNamesService.getNames(this.inputName).subscribe(
         (response) => {
-          response.geonames.forEach((geoname: any) => {
-            const name: string = `${geoname.name}, ${geoname.countryCode}`;
-            if (!namesArr.includes(name)) {
-              namesArr.push(name);
-            }
+          // for geonames.org names service
+          // response.geonames.forEach((geoname: any) => {
+          // const name: string = `${geoname.name}, ${geoname.countryCode}`;
+          // if (!namesArr.includes(name)) {
+          //   namesArr.push(name);
+          // }
+          // });
+
+          // for openweathermap.org names service
+          response.forEach((geoname: any) => {
+            const name: string = `${
+              geoname.hasOwnProperty('local_names') &&
+              geoname['local_names'].hasOwnProperty('ru')
+                ? geoname.local_names['ru']
+                : geoname.name
+            }, ${geoname.country}`;
+            namesArr.push(name);
           });
         },
         null,
