@@ -2,4 +2,4 @@
 
 ## SPA мониторинга погоды с поиском и автокомплитом
 
-## [Deploy](https://anton-evol.github.io/weatherAppAngular/dist/weather-app-angular/) https://anton-evol.github.io/weatherAppAngular/dist/weather-app-angular/
+## [Deploy: https://anton-evol.github.io/weatherAppAngular/dist/](https://anton-evol.github.io/weatherAppAngular/dist/)
